@@ -1,2 +1,0 @@
-noremap h ;
-noremap ; h
