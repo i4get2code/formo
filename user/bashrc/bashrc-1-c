@@ -1,0 +1,85 @@
+#
+# ~/.bashrc
+#
+
+# if not running interac [[ $- != *i* ]] && return
+
+# alias ls='ls --color=auto'
+# PS1='[\u@\h \W]\$ '
+# PS1='[\u@\h]:\w\$ '
+# PS1='[\u@\h \W]:\w\$ '
+
+# _B='\[$(tput bold)\]'   
+# _W='\[$(tput setaf 7)\]'
+# _G='\[$(tput setaf 2)\]'
+# _R='\[$(tput setaf 1)\]'
+# _Z='\[$(tput sgr0)\]'
+
+ZKD='\[$(tput bold)\]'   
+ZKB='\[$(tput setaf 7)\]'
+ZKV='\[$(tput setaf 2)\]'
+ZKR='\[$(tput setaf 1)\]'
+ZKN='\[$(tput sgr0)\]'
+
+PS1="$ZKD$ZKR[$ZKV\u$ZKR@$ZKV\h$ZKR\\$ $ZKB\W]\n$ZKR[$ZKB\w]\n$ZKR\\ $ZKB>> $ZKN"
+# PS1="$_B$_R^^^\n$_R[$_G\u$_R@$_G\h$_R\\$ $_W\W]\n$_R[$_W\w]\n$_R\\ $_W:- $_Z"
+# PS1="$_B$_R/\n$_R[$_G\u$_R@$_G\h$_R\\$ $_W\W]\n$_R[$_W\w]\n$_R\\ $_W>> $_Z"
+# PS1="$_B$_W[$_G\u$_R@$_G\h$_W \W]\n[\w]\\$ $_Z"
+# PS1="$_B$_W[$_G\u$_R@$_G\h$_W \W]:\w\\$ $_Z"
+# PS1="$B$W[$G\u$R@$G\h$W]:\w\\$ $Z"
+
+# PS1="\[$(tput bold)\]\[$(tput setaf 7)\][\[$(tput setaf 2)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 7)\]\[$(tput setaf 2)\]\h\[$(tput setaf 7)\]]:\w\\$ \[$(tput sgr0)\]"
+
+# PS1='\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 5)\]\u\[$(tput setaf 4)\]@\[$(tput setaf 5)\]\h\[$(tput setaf 4)\]]:\[$(tput setaf 6)\]\w\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]'
+
+# TERM=xterm-256color
+# export TERMINAL=sakura
+# if [ "$TERM" = "eterm-color" ] ; then
+#  TERM="vt100"
+# fi
+
+# setxkbmap -layout "us,ru" -option "grp:shifts_toggle"
+# setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+
+# if [ "$TERM" = "xterm-256color" ]; then
+#    setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+# fi
+
+# eval $(opam config env)
+
+ZNABA="/media/spaco/interna"
+
+if [ -d $ZNABA ]; then
+    ZNABO="$ZNABA"
+    export ZNABO
+fi
+
+if  [ -d ~/$ZNABA ]; then
+    ZNABO="$HOME"
+    export ZNABO
+fi
+
+# export ZEJO="/media/spaco/interna/ejo"
+
+# sh $HUB/auto/startup/paths.sh
+export ZCONF="$ZNABO/auxto/conf-user"
+export ZSTARTUP="$ZNABO/auxto/skripto/startup"
+
+# sh $STARTUP/lang.sh
+# sh $STARTUP/rfkill.sh
+
+# ================
+# additional paths
+# ================
+
+# UNPM="$HOME/.npm-packages"
+
+# RED="$HOME/.red"
+# URED="$HOME/.local"
+
+# IDRIS="$HOME/.local"
+
+# tell our environment about user-installed node tools
+# PATH="$IDRIS/bin:$RED/bin:$PATH:$NPM/bin"
+# PATH="$PATH:$NPM/bin:$RED/bin"
+# PATH="$PATH:$UNPM/bin:$URED/bin"

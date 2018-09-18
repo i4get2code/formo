@@ -1,0 +1,24 @@
+ZNABO="media/spaco/interna"
+
+if [ -d /$ZNABO ]; then
+    ZNABO="/$ZNABO"
+    export ZNABO
+fi
+
+if  [ -d ~/$ZNABO ]; then
+    ZNABO="$HOME/$ZNABO"
+    export ZNABO
+fi
+
+export ZCONF="$ZNABO/auxto/conf-user"
+export ZSTARTUP="$ZNABO/auxto/skripto/startup"
+
+ZKD='\[$(tput bold)\]'   
+ZK7='\[$(tput setaf 3)\]'
+ZKV='\[$(tput setaf 2)\]'
+ZKR='\[$(tput setaf 1)\]'
+ZKN='\[$(tput sgr0)\]'
+
+# PS1="$ZKD$ZKR[$ZKV\u$ZKR@$ZKV\h$ZKR\\$ $ZK7\W]\n$ZKR[$ZK7\w]\n$ZKR\\ $ZK7>> $ZKN"
+PS1="$ZKD$ZKR[$ZKV\u$ZKR@$ZKV\h$ZKR\\$ $ZK7\W$ZKR]\n$ZKR[$ZK7\w$ZKR]\n$ZKR\\ $ZK7>$ZKR> $ZKN"
+

@@ -1,0 +1,387 @@
+;; ================================
+;; we dont't want a startup message
+;; ================================
+
+(setq inhibit-startup-screen t)
+
+;; ============================
+;; tool that should not be used
+;; ============================
+
+;; gui
+(tool-bar-mode -1)
+
+;; =============================================
+;; set default font and cement it for all frames
+;; =============================================
+
+(add-to-list 'default-frame-alist '(font . "monospace-12" ))
+(set-face-attribute 'default t :font "monospace-12" )
+
+;; (set-default-font "monospace-12")
+
+;; (add-to-list 'default-frame-alist '(font . "monospace-12" ))
+;; (set-face-attribute 'default t :font "monospace-12" )
+
+;; ===============
+;; fabulous cursor
+;; ===============
+
+;; (setq-default cursor-type 'hollow)
+;; (setq-default cursor-type 'bar)
+;; (setq-default cursor-type 'hbar)
+
+;; (blink-cursor-mode (- (*) (*) (*)))
+
+;; (set-cursor-color "#00ff00")
+
+;; ============================
+;; completions to be vertically
+;; aligned (in neat columns)
+;; ============================
+
+(setq completions-format 'vertical)
+
+;; =========================
+;; nifty line/column numbers
+;; =========================
+
+(line-number-mode 1)
+(column-number-mode 1)
+
+;; =========================
+;; smooth scrolling goodness
+;; =========================
+
+;; one line at a time
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+;; don't accelerate scrolling
+(setq mouse-wheel-progressive-speed nil)
+
+(setq redisplay-dont-pause t
+      scroll-step 1
+      scroll-margin 1
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+
+;; (setq redisplay-dont-pause t
+;;       scroll-margin 1
+;;       scroll-step 1
+;;       scroll-conservatively 10000
+;;       scroll-preserve-screen-position 1)
+
+;; (setq-default smooth-scroll-margin 0)
+;; (setq scroll-step 1
+;;       scroll-margin 1
+;;       scroll-conservatively 100000
+;;       scroll-preserve-screen-position 1)
+
+;; ======================================
+;; dired customizations for great justice
+;; ======================================
+
+(defun xah-dired-mode-setup ()
+ "to be run as hook for `dired-mode'."
+ (dired-hide-details-mode 1))
+(add-hook 'dired-mode-hook 'xah-dired-mode-setup)
+
+(setq dired-listing-switches "--group-directories-first -alh")
+
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
+
+;; ============================
+;; enable disabled commands
+;; because they are damn useful
+;; ============================
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; ======================
+;; tabs are anachronistic
+;; use spaces
+;; ======================
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+;; (setq tab-stop-list (number-sequence 2 120 2))
+
+;; ==========================
+;; fancy backup configuration
+;; ==========================
+
+;; stop creating nasty autosave and backup files
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+;; default and per-save backups go here:
+;; (setq backup-directory-alist
+;; '(("" . "/tmp/emacs/backup/per-save")))
+
+;; (defun force-backup-of-buffer ()
+;;   ;; make a special "per-session" backup at the first save of each
+;;   ;; emacs session.
+;;   (when (not buffer-backed-up)
+;;     ;; override the default parameters for per-session backups.
+;;     (let ((backup-directory-alist
+;;            '(("" . "/tmp/emacs/backup/per-session")))
+;;           (kept-new-versions 3))
+;;       (backup-buffer)))
+;;   ;; make a "per save" backup on each save. the first save results in
+;;   ;; both a per-session and a per-save backup, to keep the numbering
+;;   ;; of per-save backups consistent.
+;;   (let ((buffer-backed-up nil))
+;;     (backup-buffer)))
+;;
+;; (add-hook 'before-save-hook  'force-backup-of-buffer)
+
+;; ===============================
+;; repositories of great treasures
+;; ===============================
+
+(add-to-list 'load-path "~/.emacs.d/mia/")
+
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (setq package-enable-at-startup nil)
+  (setq package-archives '())
+  (package-initialize)
+  (add-to-list 'package-archives
+    '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives
+    '("gnu" . "http://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives
+    '("marmalade" . "https://marmalade-repo.org/packages/"))
+)
+
+;; ================================
+;; hooks for a good emacs fisherman
+;; ================================
+
+
+(add-hook 'dired-mode-hook
+ (lambda ()
+  (define-key dired-mode-map (kbd "RET")
+    (lambda () (interactive) (dired-find-alternate-file)))
+  ; was buffer creating enter
+  ))
+
+(add-hook 'dired-mode-hook
+ (lambda ()
+  (define-key dired-mode-map (kbd "^")
+    (lambda () (interactive) (find-alternate-file "..")))
+  ; was dired-up-directory
+  ))
+
+(add-hook 'dired-mode-hook
+ (lambda ()
+  (define-key dired-mode-map (kbd "@")
+    (lambda () (interactive) (dired-up-directory)))
+  ; was undefined
+  ))
+
+;; =====================
+;; we defined these keys
+;; for great good
+;; =====================
+
+(global-set-key (kbd "C-x p") (kbd "C-- C-x o"))
+(global-set-key (kbd "M-]"  ) (kbd "C-x o"    ))
+(global-set-key (kbd "M-["  ) (kbd "C-- C-x o"))
+(global-set-key (kbd "C-x y") (kbd "C-x 5 o"))
+;; duplicate for tmux
+(global-set-key (kbd "M-\"") 'toggle-input-method)
+
+;; ===============================
+;; keys from packages of happiness
+;; ================================
+
+;; change frame with the arrow keys
+;; (global-set-key (kbd "M-<down>" ) 'windmove-down ) ;; gui
+;; (global-set-key (kbd "M-<up>"   ) 'windmove-up   ) ;; gui
+;; (global-set-key (kbd "M-<right>") 'windmove-right) ;; gui
+;; (global-set-key (kbd "M-<left>" ) 'windmove-left ) ;; gui
+
+;; zap up to char
+(global-set-key (kbd "C-M-z") #'zzz-to-char)
+;; (global-set-key (kbd "C-S-z") 'zap-to-char)
+(global-set-key (kbd "C-z") 'zap-to-char)
+(global-set-key (kbd "M-z") #'zzz-up-to-char)
+
+(global-set-key (kbd "C-|") 'switch-window) ;; gui
+(global-set-key (kbd "C-x g") 'switch-window)
+(require 'switch-window)
+
+;; (require 'mode-line-frame)
+;; (require 'funda-haxe-mode)
+
+;; (load "~/.emacs.d/mia/tao.el")
+;; (require 'tool-bar+)
+;; (tool-bar-mode 0)
+;; (tool-bar-here-mode)
+
+;; (add-to-list 'load-path "/root/.emacs.d/elpa/icicles-20161012.1345")
+;; (require 'icicles)
+
+;; (require 'window-number)
+;; (window-number-mode)
+
+;; (global-set-key (kbd "C-x [") 'purpose-set-window-purpose)
+;; (require 'window-purpose)
+;; (purpose-mode)
+
+;; (require 'window-purpose-x)
+;; (purpose-x-kill-setup)
+
+;; =====================================
+;; multiple cursors multiplies happiness
+;; =====================================
+
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-M-]") 'mc/edit-lines)
+(global-set-key (kbd "M-n") 'mc/mark-next-like-this) ;
+;; (global-set-key (kbd "C-S-j") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-p") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-S-k") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-RET") 'mc/mark-pop)
+;; (global-set-key (kbd "C-S-l") 'mc/mark-pop)
+(global-set-key (kbd "C-M-_") 'mc/mark-all-like-this)
+;; (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+
+;; (require 'use-package)
+
+;; (use-package dired-subtree :ensure t
+;;   :after dired
+;;   :config
+;;   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+;;   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "C-<tab>")
+              (lambda () (interactive) (dired-subtree-toggle)))
+            ))
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "C-<backtab>")
+              (lambda () (interactive) (dired-subtree-cycle)))
+            ))
+
+;; ==================
+;; dired file creator
+;; ==================
+
+ (eval-after-load 'dired
+  '(progn
+     (define-key dired-mode-map (kbd "_") 'my-dired-create-file)
+     (defun my-dired-create-file (file)
+       "create a file called file.
+       ;; if file already exists, signal an error."
+       (interactive
+        (list (read-file-name "create file: " (dired-current-directory))))
+       (let* ((expanded (expand-file-name file))
+              (try expanded)
+              (dir (directory-file-name (file-name-directory expanded)))
+              new)
+         (if (file-exists-p expanded)
+             (error "cannot create file %s: file exists" expanded))
+         ;; find the topmost nonexistent parent dir (variable `new')
+         (while (and try (not (file-exists-p try)) (not (equal new try)))
+           (setq new try
+                 try (directory-file-name (file-name-directory try))))
+         (when (not (file-exists-p dir))
+           (make-directory dir t))
+         (write-region "" nil expanded t)
+         (when new
+           (dired-add-file new)
+           (dired-move-to-filename))))))
+
+;; freezes emacs!
+;; ==============
+;; eshell fashion
+;; ==============
+
+;; (setq eshell-prompt-function
+;;       (lambda ()
+;;         (concat
+;;          (propertize "┌─[" 'face `(:foreground "green"))
+;;          (propertize (user-login-name) 'face `(:foreground "red"))
+;;          (propertize "@" 'face `(:foreground "green"))
+;;          (propertize (system-name) 'face `(:foreground "blue"))
+;;          (propertize "]──[" 'face `(:foreground "green"))
+;;          (propertize (format-time-string "%H:%M" (current-time)) 'face `(:foreground "yellow"))
+;;          (propertize "]──[" 'face `(:foreground "green"))
+;;          (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))
+;;          (propertize "]\n" 'face `(:foreground "green"))
+;;          (propertize "└─>" 'face `(:foreground "green"))
+;;          (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "green"))
+;;          )))
+
+;; ======
+;; themes
+;; ======
+
+;; (load-theme 'badwolf t) ;; emacs -nw fail
+;; (load-theme 'atom-one-dark t) ;; emacs -nw fail
+;; (load-theme 'heroku  t) ;; emacs -nw fail
+
+;; (load-theme 'faff  t) ;; not fail
+
+;; whitly themes
+;; (load-theme 'autumn-light t) ;; not cool
+;; (load-theme 'espresso t) ;; not fail completely
+;; (load-theme 'eclipse t) ;; not fail
+;; (load-theme 'eink t) 
+;; (load-theme 'silkworm t) ;; super
+
+;; darkly  themes
+;; (load-theme 'arjen-grey t) ;; bad mode line
+;; (load-theme 'abyss t)
+;; (load-theme 'ample-zen t)
+;; (load-theme 'ample t)
+;; (load-theme 'boron t)
+;; (load-theme 'ahungry t)
+;; (load-theme 'bubbleberry t)
+;; (load-theme 'assemblage t) ;; bad console
+;; (load-theme 'calmer-forest t) ;; ugly
+;; (load-theme 'busybee t) ;; ok
+;; (load-theme 'bliss t)
+;; (load-theme 'caroline t)
+(load-theme 'clues t)
+;; (load-theme 'colonoscopy t)
+;; (load-theme 'dakrone  t)
+;; (load-theme 'danneskjold  t)
+;; (load-theme 'darcula  t)
+;; (load-theme 'green-phosphor t)
+;; (load-theme 'cherry-blossom t)
+;; (load-theme 'hamburg  t)
+;; (load-theme 'arjen-grey  t)
+;; (load-theme 'anti-zenburn  t)
+;; (load-theme 'badger  t) ;; super
+
+;; other funky themes
+;; (load-theme 'borland-blue t)
+;; (load-theme 'afternoon t)
+
+;; =============
+;; fancy comment
+;; =============
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (elixir-mode erlang julia-repl use-package dired-subtree zzz-to-char window-purpose window-number typescript-mode tool-bar+ switch-window silkworm-theme rust-mode rainbow-delimiters pug-mode powerline pdf-tools pcache nix-mode nim-mode multiple-cursors lua-mode kotlin-mode julia-mode idris-mode highlight-chars heroku-theme hc-zenburn-theme hamburg-theme green-phosphor-theme go-mode geiser faff-theme ethan-wspace espresso-theme emms eink-theme eclipse-theme dash-functional darkane-theme darcula-theme danneskjold-theme dakrone-theme cython-mode csharp-mode colonoscopy-theme clues-theme cider cherry-blossom-theme caroline-theme calmer-forest-theme busybee-theme bubbleberry-theme boron-theme borland-blue-theme bliss-theme blank-mode basic-theme badwolf-theme badger-theme autumn-light-theme atom-one-dark-theme assemblage-theme arjen-grey-theme anti-zenburn-theme ample-zen-theme ample-theme ahungry-theme afternoon-theme abyss-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
