@@ -1,22 +1,13 @@
 # source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
-ZNABO="$HOME/salto/interna"
-
-# if [ -d /$ZNABO ]; then
-#     ZNABO="/$ZNABO"
-#     export ZNABO
+# if [ -f /etc/bashrc ]; then
+# 	. /etc/bashrc
 # fi
 
-if  [ -L $ZNABO ]; then
-    ZNABO="$ZNABO"
-    export ZNABO
-fi
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-export ZCONF="$ZNABO/skripto"
-export ZSTARTUP="$ZNABO/skripto/startup"
+alias ls='ls --color=auto'
+# PS1='[\u@\h \W]\$ '
 
 ZKD='\[$(tput bold)\]'
 ZK1='\[$(tput setaf 1)\]'
@@ -32,10 +23,26 @@ PS1="$ZKD$ZK1[$ZK2\u$ZK1@$ZK2\h$ZK1\\$ $ZK1\W$ZK2]
 $ZK1[$ZK2\w$ZK1]
 $ZK1\\ $ZK2>$ZK1> $ZKN"
 
-export PATH="$PATH:$HOME/.npm-pkgs/bin"
+# with gdm, xdm or lightdm there is no need to source ~/.Xmodmap. for startx, in ~/.xinitrc put:
+
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+ZNABO="$HOME/salto/interna"
+
+# if [ -d /$ZNABO ]; then
+#     ZNABO="/$ZNABO"
+#     export ZNABO
+# fi
+
+if  [ -L $ZNABO ]; then
+    ZNABO="$ZNABO"
+    export ZNABO
+fi
+
+# export ZCONF="$ZNABO/skripto"
+# export ZSTARTUP="$ZNABO/skripto/startup"
+
+# export PATH="$PATH:$HOME/.npm-pkg/bin"
 
 # uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
-
-# user specific aliases and functions
-

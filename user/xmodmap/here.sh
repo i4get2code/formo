@@ -4,10 +4,4 @@
 S="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $S # necessary
 
-cd $HOME # cd ~/
-mkdir salto
-
-cd salto
-ln -s /mnt/spaco/interna/ ./
-
-
+ln -s xmodmap-1-a .xmodmap

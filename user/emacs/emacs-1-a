@@ -8,8 +8,8 @@
 ;; tool that should not be used
 ;; ============================
 
-;; gui
-;; (tool-bar-mode -1)
+gui
+(tool-bar-mode -1)
 
 ;; =============================================
 ;; set default font and cement it for all frames
