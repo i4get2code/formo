@@ -1,0 +1,11 @@
+# ~/.bash_profile should be super-simple and just
+# load .profile and .bashrc (in that order)
+
+# .bashrc is only read by a shell
+# that's both interactive and non-login,
+# so lots of people end up telling
+# their .bash_profile to also read .bashrc:
+
+source ~/.profile
+source ~/.bashrc
+# [[ -r ~/.bashrc ]] && . ~/.bashrc

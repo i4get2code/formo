@@ -1,0 +1,24 @@
+# # # # #
+# hubs #
+# # # # #
+
+# ZNABO="$HOME/salto/interna"
+
+# if [ -d /$ZNABO ]; then
+#     ZNABO="/$ZNABO"
+#     export ZNABO
+# fi
+
+# if  [ -L $ZNABO ]; then
+#     ZNABO="$ZNABO"
+#     export ZNABO
+# fi
+
+# export ZCONF="$ZNABO/skripto"
+# export ZSTARTUP="$ZNABO/skripto/startup"
+
+# # # # #
+# paths #
+# # # # #
+
+# export PATH="$PATH:$HOME/.npm-pkg/bin"

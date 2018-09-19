@@ -51,34 +51,11 @@ setxkbmap -option "grp:win_space_toggle"
 # xmodmap #
 # # # # # #
 
-# with gdm, xdm or lightdm there is no need to source ~/.Xmodmap. for startx, in ~/.xinitrc put:
+# with gdm, xdm or lightdm t
+# here is no need to source ~/.Xmodmap.
+# for startx, use ~/.xinitrc
 
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
-
-# # # # #
-# fancy #
-# # # # #
-
-ZNABO="$HOME/salto/interna"
-
-# if [ -d /$ZNABO ]; then
-#     ZNABO="/$ZNABO"
-#     export ZNABO
-# fi
-
-if  [ -L $ZNABO ]; then
-    ZNABO="$ZNABO"
-    export ZNABO
-fi
-
-# export ZCONF="$ZNABO/skripto"
-# export ZSTARTUP="$ZNABO/skripto/startup"
-
-# # # # #
-# paths #
-# # # # #
-
-# export PATH="$PATH:$HOME/.npm-pkg/bin"
 
 # # # # #
 # fancy #
