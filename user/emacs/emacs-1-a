@@ -77,6 +77,13 @@
 ;;       scroll-conservatively 100000
 ;;       scroll-preserve-screen-position 1)
 
+;; ==========================
+;; allow git symlinks madness
+;; it keeps me staying sane
+;; ==========================
+
+(setq vc-follow-symlinks t)
+
 ;; ======================================
 ;; dired customizations for great justice
 ;; ======================================
