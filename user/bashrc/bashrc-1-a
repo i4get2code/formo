@@ -47,16 +47,6 @@ setxkbmap -option "grp:win_space_toggle"
 # setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 # setxkbmap -layout "us,ru" -option "grp:shifts_toggle"
 
-# # # # # #
-# xmodmap #
-# # # # # #
-
-# with gdm, xdm or lightdm t
-# here is no need to source ~/.Xmodmap.
-# for startx, use ~/.xinitrc
-
-[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
-
 # # # # #
 # fancy #
 # # # # #

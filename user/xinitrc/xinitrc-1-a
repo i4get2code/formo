@@ -1,1 +1,15 @@
+# # # # # #
+# xmodmap #
+# # # # # #
+
+# with gdm, xdm or lightdm t
+# here is no need to source ~/.Xmodmap.
+# for startx, put in ~/.xinitrc before starting a wm:
+
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+# # # # # #
+# startwm #
+# # # # # #
+
 exec i3
