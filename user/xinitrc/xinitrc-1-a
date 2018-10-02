@@ -1,15 +1,33 @@
+# # # # # # # # # #
+# keyboard layout #
+# # # # # # # # # #
+
+# layouts
+# setxkbmap -layout "us,ru"
+
+# key combination
+# setxkbmap -option "grp:alt_shift_toggle"
+# setxkbmap -option "grp:ctrl_shift_toggle"
+# setxkbmap -option "grp:win_space_toggle"
+
+# could be meshed together
+# setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+# setxkbmap -layout "us,ru" -option "grp:shifts_toggle"
+
 # # # # # #
 # xmodmap #
 # # # # # #
 
-# with gdm, xdm or lightdm t
-# here is no need to source ~/.Xmodmap.
+# with gdm, xdm or lightdm
+# there is no need to source ~/.Xmodmap.
 # for startx, put in ~/.xinitrc before starting a wm:
 
-[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+# [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 
 # # # # # #
 # startwm #
 # # # # # #
 
-exec i3
+# exec startkde
+# exec gnome-session
+# exec enlightenment_start

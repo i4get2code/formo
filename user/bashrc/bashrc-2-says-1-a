@@ -8,7 +8,7 @@
 # fi
 
 # if not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
 
 # # # # #
 # fancy #
@@ -30,22 +30,6 @@ ZKN='\[$(tput sgr0)\]'
 PS1="$ZKD$ZK1[$ZK2\u$ZK1@$ZK2\h$ZK1\\$ $ZK1\W$ZK2]
 $ZK1[$ZK2\w$ZK1]
 $ZK1\\ $ZK2>$ZK1> $ZKN"
-
-# # # # # # # # # #
-# keyboard layout #
-# # # # # # # # # #
-
-# layouts
-setxkbmap -layout "us,ru"
-
-# key combination
-# setxkbmap -option "grp:alt_shift_toggle"
-# setxkbmap -option "grp:ctrl_shift_toggle"
-setxkbmap -option "grp:win_space_toggle"
-
-# could be meshed together
-# setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
-# setxkbmap -layout "us,ru" -option "grp:shifts_toggle"
 
 # # # # #
 # fancy #
