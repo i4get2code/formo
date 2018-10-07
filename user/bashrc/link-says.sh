@@ -9,8 +9,8 @@ P=$(pwd)
 
 cd $HOME # cd ~/
 
-if [ -f .bashrc ]; then
+if [ -L .bashrc -o -f .bashrc ]; then
    rm .bashrc
 fi
 
-ln -s $P/.bashrc ~/
+ln -s $P/bashrc-2-says-1-a ~/.bashrc

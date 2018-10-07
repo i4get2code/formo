@@ -5,4 +5,4 @@
 # ln -s $UCONF/.bashrc $HOME/
 # ln -s $UCONF/.bashrc-a .bashrc
 
-ln -s $ZCONF/.bashrc $HOME/
+# ln -s $ZCONF/.bashrc $HOME/
