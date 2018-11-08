@@ -1,0 +1,33 @@
+# # # # # # # # # #
+# keyboard layout #
+# # # # # # # # # #
+
+# layouts
+setxkbmap -layout "us,ru"
+
+# key combination
+setxkbmap -option "grp:sclk_toggle"
+
+# could be meshed together
+# setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+
+# # # # # #
+# xmodmap #
+# # # # # #
+
+# with gdm, xdm or lightdm
+# there is no need to source ~/.Xmodmap.
+# for startx, put this ~/.xinitrc before starting a wm:
+
+# [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+# # # # # #
+# startwm #
+# # # # # #
+
+exec awesome
+# exec herbstluftwm
+# exec enlightenment_start
+# exec startkde
+# exec gnome-session
+
