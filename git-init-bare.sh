@@ -1,1 +1,1 @@
-git init --bare ../formo.git
+git init --bare ../gits/formo.git
