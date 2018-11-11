@@ -9,7 +9,7 @@ setxkbmap -layout "us,ru"
 setxkbmap -option "grp:sclk_toggle"
 
 # could be meshed together
-# setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+# setxkbmap -layout "us,ru" -option "grp:sclk_toggle"
 
 # # # # # #
 # xmodmap #
@@ -27,7 +27,6 @@ setxkbmap -option "grp:sclk_toggle"
 
 exec awesome
 # exec herbstluftwm
-# exec enlightenment_start
 # exec startkde
 # exec gnome-session
-
+# exec enlightenment_start
