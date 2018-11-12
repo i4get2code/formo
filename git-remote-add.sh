@@ -4,14 +4,16 @@
 S="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $S # necessary
 
-git remote add on ../gits/formo.git
-git remote add off ../gits/formo.git
+D="formo"
 
-git remote set-url --push off https://github.com/i4get2code/formo.git
-git remote set-url --add --push off ../gits/formo.git
+git remote add on ../gits/$D.git
+git remote add off ../gits/$D.git
 
-git remote set-url on https://github.com/i4get2code/formo.git
-git remote set-url --push on ../gits/formo.git
-git remote set-url --add --push on https://github.com/i4get2code/formo.git
+git remote set-url --push off https://github.com/i4get2code/$D.git
+git remote set-url --add --push off ../gits/$D.git
+
+git remote set-url on https://github.com/i4get2code/$D.git
+git remote set-url --push on ../gits/$D.git
+git remote set-url --add --push on https://github.com/i4get2code/$D.git
 
 git remote -v

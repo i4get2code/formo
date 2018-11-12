@@ -4,4 +4,10 @@
 S="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $S # necessary
 
-git init --bare ../gits/formo.git
+D="formo"
+
+if [ ! -d ../gits/$D.git ]; then
+    git init --bare ../gits/$D.git
+else
+    echo "already created"
+fi
