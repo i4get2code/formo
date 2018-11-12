@@ -9,5 +9,5 @@ D="formo"
 if [ ! -d ../gits/$D.git ]; then
     git init --bare ../gits/$D.git
 else
-    echo "already created"
+    echo $D.git" already created"
 fi
