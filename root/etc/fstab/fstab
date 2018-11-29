@@ -1,0 +1,7 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sda1
+UUID=267eab20-fd8a-488a-bbd8-f7ac75925cb5	/         	ext4      	rw,relatime	0 1
+UUID=f676d2dc-d199-4379-9a35-00e2a496347b       /mnt/spaco      ext4            defaults        0 2
