@@ -2,6 +2,7 @@
 # P means path
 # N means name
 # B means base
+# H means hub
 
 # exec your command from whatever place
 S="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -15,11 +16,13 @@ cd ../../
 B=$(pwd)
 cd $HOME # cd ~/
 
-if [ ! -d salto ]; then
-    mkdir salto
+H="salto"
+
+if [ ! -d $H ]; then
+    mkdir $H
 fi
 
-cd salto
+cd $H
 
 if [ -L $N ]; then
     rm $N
